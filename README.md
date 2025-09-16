@@ -55,8 +55,9 @@ https://doi.org/10.1038/s42256-023-00716-3
 > The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet".
 > The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies.
 > This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
-> The optimization -[algorithm](#geometry-optimization) is the same as that in the optimization section.
-> The program allows you to set two convergence conditions to more strictly optimize the selected structures after the first stage of screening.
+
+> The optimization algorithm is the same as that in the optimization section.
+> The program allows you to set two convergence conditions to more strictly optimize the selected structures after the 1st stage of screening.
 
 ![Logo](./Diagram/Scheme.png) 
 
