@@ -12,6 +12,9 @@ https://doi.org/10.1038/s42256-023-00716-3
 - [Capture DFT data](#Executable-file-cnsub_greppy)
 - [Fine-tuning](#Executable-file-cnsub_trainpy)
 
+<br>
+<br>
+
 ## Executable file: cnsub_run.py
 ### ▸ Input files:
 **Input_CHGNet** : Required. If this file is not present, the program will generate a template and then terminate execution.
@@ -47,12 +50,18 @@ https://doi.org/10.1038/s42256-023-00716-3
 > It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
 **✔︎ Sampling optimization using Monte Carlo**
+> IBRION: 11 or 13
+
 > The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet".
 > The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies.
 > This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
+> The optimization -[algorithm](#geometry-optimization) is the same as that in the optimization section.
+> The program allows you to set two convergence conditions to more strictly optimize the selected structures after the first stage of screening.
 
 ![Logo](./Diagram/Scheme.png) 
 
+<br>
+<br>
 
 ## Executable file: cnsub_grep.py
 ### ▸ Input files (from VASP)
@@ -61,6 +70,8 @@ Just follow user interaction instructions
 ### ▸ Output files
 **dataset_*.json** : Training data captured by the program
 
+<br>
+<br>
 
 ## Executable file: cnsub_train.py
 ### ▸ Input files (from cnsub_grep.py)
