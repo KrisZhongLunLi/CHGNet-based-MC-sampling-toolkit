@@ -7,7 +7,6 @@ Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural netw
 
 https://doi.org/10.1038/s42256-023-00716-3
 
-
 ## Executable file: cnsub_run.py
 ### Input files:
 **Input_CHGNet** : Required. If this file is not present, the program will generate a template and then terminate execution.
@@ -24,14 +23,12 @@ https://doi.org/10.1038/s42256-023-00716-3
 **Trajectory_VASP** : Trajectory files of atomic positions during relaxation are written in VASP format.
 
 
-
 ## Executable file: cnsub_grep.py
 ### Input files (from VASP)
 Just follow user interaction instructions
 
 ### Output files
 **dataset_*.json** : Training data captured by the program
-
 
 
 ## Executable file: cnsub_train.py
