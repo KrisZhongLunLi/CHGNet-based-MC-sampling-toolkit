@@ -7,4 +7,4 @@
 
 **POSCAR** : Required. Must conform to the standard VASP input format.
 
-**Fine_Tune_model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
+**Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
