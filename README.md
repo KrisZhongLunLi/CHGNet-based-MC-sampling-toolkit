@@ -1,4 +1,4 @@
-# NTUST-CHGNet_post-processing-script
+# CHGNet_post-processing-script
 Post-processing script for CHGNet
 
 The CHGNet model comes from this study:
