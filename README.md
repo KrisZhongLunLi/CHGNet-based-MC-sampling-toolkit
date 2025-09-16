@@ -7,6 +7,9 @@ Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural netw
 
 https://doi.org/10.1038/s42256-023-00716-3
 
+# Outline
+- [特色](# Executable file: cnsub_run.py)
+
 ## Executable file: cnsub_run.py
 ### Input files:
 **Input_CHGNet** : Required. If this file is not present, the program will generate a template and then terminate execution.
