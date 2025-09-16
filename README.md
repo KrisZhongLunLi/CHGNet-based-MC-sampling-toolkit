@@ -28,7 +28,12 @@ https://doi.org/10.1038/s42256-023-00716-3
 **Trajectory_VASP** : Trajectory files of atomic positions during relaxation are written in VASP format.
 
 ### Function
-! [Logo](./Diagram/Scheme.png) 
+
+**Sampling optimization using Monte Carlo**
+
+The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet". The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies. This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
+
+![Logo](./Diagram/Scheme.png) 
 
 
 ## Executable file: cnsub_grep.py
