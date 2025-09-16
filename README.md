@@ -1,5 +1,5 @@
 ## NTUST-CHGNet_post-processing-script
-#Post-processing script for CHGNet
+# Post-processing script for CHGNet
 
 Input_CHGNet: Required. If this file is not present, the program will generate a template and then terminate execution.
 
