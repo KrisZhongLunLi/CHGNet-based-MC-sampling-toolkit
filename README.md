@@ -13,46 +13,55 @@ https://doi.org/10.1038/s42256-023-00716-3
 - [Fine-tuning](#Executable-file-cnsub_trainpy)
 
 ## Executable file: cnsub_run.py
-### Input files:
+### ▸ Input files:
 **Input_CHGNet** : Required. If this file is not present, the program will generate a template and then terminate execution.
 
 **POSCAR** : Required. Must conform to the standard VASP input format.
 
 **Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
 
-### Output main files:
+### ▸ Output main files:
 **CHGNet_results.log** : Output log of program execution.
 
 **Output_details** : System details such as forces and tensions are output during program execution.
 
 **Trajectory_VASP** : Trajectory files of atomic positions during relaxation are written in VASP format.
 
-### Function
+### ▸ Function
 
-**Sampling optimization using Monte Carlo**
+**✔︎ Single point calculation**
+> IBRION: -1
+> Energy, force, stress, and magnetic moment predictions are performed using CHGNet.
 
-The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet". The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies. This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
+**✔︎ Geometry optimization**
+> IBRION: 1 or 3
+> Use different algorithms to optimize the structure and find the local minimum on the potential energy surface. It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
+
+**✔︎ Molecular dynamics**
+
+**✔︎ Sampling optimization using Monte Carlo**
+> The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet". The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies. This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
 
 ![Logo](./Diagram/Scheme.png) 
 
 
 ## Executable file: cnsub_grep.py
-### Input files (from VASP)
+### ▸ Input files (from VASP)
 Just follow user interaction instructions
 
-### Output files
+### ▸ Output files
 **dataset_*.json** : Training data captured by the program
 
 
 ## Executable file: cnsub_train.py
-### Input files (from cnsub_grep.py)
+### ▸ Input files (from cnsub_grep.py)
 **Input_CHGNet_Training** : Required. Training process settings. If this file is not present, the program will generate a template and then terminate execution.
 
 **dataset_*.json** : Required. Training data set captured by cnsub_grep.py.
 
 **Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
 
-### Output main files
+### ▸ Output main files
 **epochX_eX_fX_sX_mX.pth.tar** or 
 
 **bestE_epochX_eX_fX_sX_mX.pth.tar** or
