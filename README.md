@@ -8,7 +8,9 @@ Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural netw
 https://doi.org/10.1038/s42256-023-00716-3
 
 # Outline
-- [Running](#Executable-file-cnsub_runpy)
+- [Perform calculations](#Executable-file-cnsub_runpy)
+- [Capture DFT data](#Executable-file-cnsub_greppy)
+- [Fine-tuning](#Executable-file-cnsub_trainpy)
 
 ## Executable file: cnsub_run.py
 ### Input files:
