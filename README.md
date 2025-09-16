@@ -10,4 +10,8 @@ Post-processing script for CHGNet
 **Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
 
 ### Output files:
-**Input_CHGNet** : Requi
+**CHGNet_results.log** : Output log of program execution.
+
+**Output_details** : System details such as forces and tensions are output during program execution.
+
+**Trajectory_VASP** : Trajectory files of atomic positions during relaxation are written in VASP format.
