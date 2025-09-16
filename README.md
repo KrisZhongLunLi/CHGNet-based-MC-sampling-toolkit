@@ -21,3 +21,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 **Output_details** : System details such as forces and tensions are output during program execution.
 
 **Trajectory_VASP** : Trajectory files of atomic positions during relaxation are written in VASP format.
+
+
+## Executable file: cnsub_grep.py
+### Input files (from VASP)
