@@ -1,5 +1,8 @@
 # NTUST-CHGNet_post-processing-script
 Post-processing script for CHGNet
+The CHGNet model comes from this study:
+Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling. Nat Mach Intell 5, 1031–1041 (2023). 
+https://doi.org/10.1038/s42256-023-00716-3
 
 ## Executable file: cnsub_run.py
 ### Input files:
