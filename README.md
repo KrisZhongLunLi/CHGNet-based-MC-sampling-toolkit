@@ -40,7 +40,8 @@ Just follow user interaction instructions
 ### Output main files
 **epochX_eX_fX_sX_mX.pth.tar** or 
 
-**bestE_epochX_eX_fX_sX_mX.pth.tar** or "\n" __\n__ *\n*
+**bestE_epochX_eX_fX_sX_mX.pth.tar** or
+
 **bestF_epochX_eX_fX_sX_mX.pth.tar** : New model trained by the program.
 
 **_CHGNet_X.png** : The loss function of the training set and the validation set output by the training process. With each epoch training output.
