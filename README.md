@@ -66,10 +66,10 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ## Executable file: cnsub_grep.py
 ### ▸ Input files (from VASP)
-Just follow user interaction instructions
+Just follow user interaction instructions.
 
 ### ▸ Output files
-**dataset_*.json** : Training data captured by the program
+**dataset_*.json** : Training data captured by the program.
 
 <br>
 <br>
