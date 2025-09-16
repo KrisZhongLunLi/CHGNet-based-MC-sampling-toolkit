@@ -9,6 +9,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 # Outline
 - [Perform calculations](#Executable-file-cnsub_runpy)
+ - [Input](#Input-files)
 - [Capture DFT data](#Executable-file-cnsub_greppy)
 - [Fine-tuning](#Executable-file-cnsub_trainpy)
 
