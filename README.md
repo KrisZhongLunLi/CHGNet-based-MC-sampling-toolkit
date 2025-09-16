@@ -15,7 +15,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 **Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
 
-### Output files:
+### Output main files:
 **CHGNet_results.log** : Output log of program execution.
 
 **Output_details** : System details such as forces and tensions are output during program execution.
@@ -25,3 +25,21 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ## Executable file: cnsub_grep.py
 ### Input files (from VASP)
+Just follow user interaction instructions
+
+### Output files
+**dataset_*.json** : Training data captured by the program
+
+
+## Executable file: cnsub_train.py
+### Input files (from cnsub_grep.py)
+**dataset_*.json** : Training data set captured by cnsub_grep.py
+
+**Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
+
+### Output main files
+**epochX_eX_fX_sX_mX.pth.tar** or **bestE_epochX_eX_fX_sX_mX.pth.tar** or **bestF_epochX_eX_fX_sX_mX.pth.tar** : New model trained by the program.
+
+**_CHGNet_X.png** : The loss function of the training set and the validation set output by the training process. With each epoch training output.
+
+**__CHGNet_X.png** : Scatter plot of the test set, only output after training is completed.
