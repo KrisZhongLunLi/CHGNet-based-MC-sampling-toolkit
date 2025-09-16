@@ -1,0 +1,20 @@
+# Modify by Zhong-Lun Li Sep. 16 2025
+# Department of Chemical Engineering, National Taiwan University of Science and Technology, Taipei 106, Taiwan
+
+# General
+#  Tags      Options   Default  Comments
+  IBRION   =   3       # [-1]
+  # single point (-1); molecular dynamic (0); optimize using RMM-DIIS (1) or Damped MD (3); 
+  # phonon calculation (5); optimize with phonon calculation using RMM-DIIS (15) or Damped MD (35);
+  # sampling optimization using RMM-DIIS (11) or Damped MD (13)
+  PBC_A    =   1       # [1]    # considering the periodicity in the a vector (1) or not (0)
+  PBC_B    =   1       # [1]    # considering the periodicity in the b vector (1) or not (0)
+  PBC_C    =   1       # [1]    # considering the periodicity in the c vector (1) or not (0)
+
+
+# For optimization
+#  Tags      Options   Default  Comments
+  EDIFFG   =  1E-2     # [0.01] # convergence condition, maximum force on atoms (in eV/Angstrom)
+  NSW_OPT  =  500      # [500]  # maximum number of steps for geometry optimization
+  OFI_OPT  =   1       # [1]    # output frame interval
+  ISIF     =   3       # [3]    # fix cell (2); relax cell (3)

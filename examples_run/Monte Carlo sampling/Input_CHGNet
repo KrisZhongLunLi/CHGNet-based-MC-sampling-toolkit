@@ -1,0 +1,44 @@
+# Modify by Zhong-Lun Li Sep. 16 2025
+# Department of Chemical Engineering, National Taiwan University of Science and Technology, Taipei 106, Taiwan
+
+# General
+#  Tags      Options   Default  Comments
+  IBRION   =  13       # [-1]
+  # single point (-1); molecular dynamic (0); optimize using RMM-DIIS (1) or Damped MD (3); 
+  # phonon calculation (5); optimize with phonon calculation using RMM-DIIS (15) or Damped MD (35);
+  # sampling optimization using RMM-DIIS (11) or Damped MD (13)
+  PBC_A    =   1       # [1]    # considering the periodicity in the a vector (1) or not (0)
+  PBC_B    =   1       # [1]    # considering the periodicity in the b vector (1) or not (0)
+  PBC_C    =   1       # [1]    # considering the periodicity in the c vector (1) or not (0)
+  
+
+# For sampling optimization
+#  Tags      Options   Default  Comments
+  FASEQ    =  12:23
+  # FASEQ: the serial numbers start from 0. Different serial numbers are separated by space and written in the same column. 
+  #                                         You can use colons to represent consecutive serial numbers.
+  #                                         The following two examples show the same representation method, 
+  #                                         0,1,3,5,10, 11, 12, 18, 21
+  #                                         0, 1:2:5, 10:12, 18, 21
+  NAME_OCC = Na Va
+  NUM_OCC =   6  6
+  # NAME_OCC: the name of the atom to be placed, if it is vacancy, the name is "Va"
+  # NUM_OCC: the number of atoms to be placed
+  NSW_MC_G =   3       # [1]    # number of Monte Carlo iteration groups
+  NSW_MC_S =  1E3      # [1E3]  # number of Monte Carlo iterations in the 1st stage of screening
+  EDIFFG0  =  1E-5     # [1E-5] # convergence condition of Monte Carlo method (in eV/atoms)
+  TEMP_MC  =  298      # [298]  # temperature of Monte Carlo method (in K)
+
+# 1st stage
+  SCQU1    =   5       # [10]   # screening quantity
+  EDIFFG1  =  5E-2     # [0.05] # convergence condition, maximum force on atoms (in eV/Angstrom)
+  NSW_OPT1 =   50      # [50]   # maximum number of steps for geometry optimization
+  OFI_OPT1 =   1       # [1]    # output frame interval
+  ISIF1    =   3       # [3]    # fix cell (2); relax cell (3)
+
+# 2nd stage
+  SCQU2    =   3       # [3]    # screening quantity for all sampling data
+  EDIFFG2  =  1E-2     # [0.01] # convergence condition, maximum force on atoms (in eV/Angstrom)
+  NSW_OPT2 =  500      # [500]  # maximum number of steps for geometry optimization
+  OFI_OPT2 =   1       # [1]    # output frame interval
+  ISIF2    =   3       # [3]    # fix cell (2); relax cell (3)

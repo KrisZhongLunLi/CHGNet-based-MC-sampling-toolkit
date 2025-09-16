@@ -1,0 +1,16 @@
+# Modify by Zhong-Lun Li Sep. 16 2025
+# Department of Chemical Engineering, National Taiwan University of Science and Technology, Taipei 106, Taiwan
+
+# General
+#  Tags      Options   Default  Comments
+  RAT_TRA  =  0.80     # [0.80] # the proportion of input used as training set
+  RAT_VAL  =  0.10     # [0.10] # the proportion of input used as validation set
+
+# Training part
+  LEA_R    =  1E-2     # [1E-2] # learning rate
+  CRT      =   1       # [1]    # types of loss functions, MAE (0), MSE (1) or Huber (2)
+  LRS      =   1       # [1]    # learning rate scheduler, CosLR (1) or ExponentialLR (2)
+  EPOCH    =  50       # [50]   # number of epochs for training
+  FPTO     =  100      # [100]  # frequency to print training output
+  BATCH    =   6       # [NCPUs]# the number of images calculated per synchronization
+  RANDSEED =  42       # [None] # integer, random seeds are used to allocate training, validation, and test sets

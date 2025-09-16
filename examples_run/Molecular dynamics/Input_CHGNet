@@ -1,0 +1,27 @@
+# Modify by Zhong-Lun Li Sep. 16 2025
+# Department of Chemical Engineering, National Taiwan University of Science and Technology, Taipei 106, Taiwan
+
+# General
+#  Tags      Options   Default  Comments
+  IBRION   =   0       # [-1]
+  # single point (-1); molecular dynamic (0); optimize using RMM-DIIS (1) or Damped MD (3); 
+  # phonon calculation (5); optimize with phonon calculation using RMM-DIIS (15) or Damped MD (35);
+  # sampling optimization using RMM-DIIS (11) or Damped MD (13)
+  PBC_A    =   1       # [1]    # considering the periodicity in the a vector (1) or not (0)
+  PBC_B    =   1       # [1]    # considering the periodicity in the b vector (1) or not (0)
+  PBC_C    =   1       # [1]    # considering the periodicity in the c vector (1) or not (0)
+
+
+# For MD
+#  Tags      Options   Default  Comments
+  POTIM    =   1       # [1]    # time step for MD (in fs)
+  NSW_MD   = 1000      # [100]  # the number of time step for MD
+  OFI_MD   =   1       # [1]    # output frame interval
+  ENSB     =   2       # [2]    # ensemble selection, NVE (1); NVT (2); NPT (3)
+  THEMT    =   2       # [2]    # thermostat selection, Nose-Hoover (0); Berendsen (1); Berendsen_inhomogeneous (2)
+  TEMP_B   =  298      # [298]  # starting temperature in K
+  TEMP_E   =  298      # [298]  # end temperature in K
+  TAU_T    =  100      # [100]  # time constant for temperature coupling in fs
+  TAU_P    = 1000      # [1000] # time constant for pressure coupling in fs (NPT)
+  PRES     =   1       # [1]    # pressure in bar (NPT)
+  BULK_M   =   2       # [2]    # bulk modulus of the material in GPa (NPT)
