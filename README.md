@@ -31,16 +31,25 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 **✔︎ Single point calculation**
 > IBRION: -1
+
 > Energy, force, stress, and magnetic moment predictions are performed using CHGNet.
+
+**✔︎ Molecular dynamics**
+> IBRION: 0
+
+> Run a molecular dynamics simulation. You can choose to simulate in the NVE, NVT, or NPT ensemble.                 
+> Note! The choice of thermostat affects the lattice degrees of freedom during the NPT simulation.
 
 **✔︎ Geometry optimization**
 > IBRION: 1 or 3
-> Use different algorithms to optimize the structure and find the local minimum on the potential energy surface. It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
-**✔︎ Molecular dynamics**
+> Use different algorithms to optimize the structure and find the local minimum on the potential energy surface.
+> It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
 **✔︎ Sampling optimization using Monte Carlo**
-> The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet". The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies. This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
+> The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet".
+> The program sequentially introduces dopants according to the given order and employs a Monte Carlo exchange algorithm, where atomic swaps are either accepted or rejected based on their associated energies.
+> This process continues until the convergence criterion is satisfied or the maximum number of steps is reached.
 
 ![Logo](./Diagram/Scheme.png) 
 
