@@ -33,9 +33,9 @@ Just follow user interaction instructions
 
 ## Executable file: cnsub_train.py
 ### Input files (from cnsub_grep.py)
-**Input_CHGNet_Training** : Training process settings. Required. If this file is not present, the program will generate a template and then terminate execution.
+**Input_CHGNet_Training** : Required. Training process settings. If this file is not present, the program will generate a template and then terminate execution.
 
-**dataset_*.json** : Training data set captured by cnsub_grep.py.
+**dataset_*.json** : Required. Training data set captured by cnsub_grep.py.
 
 **Fine_Tune_Model.tar** : Optional. Provides parameter configurations during execution. If absent, the program defaults to the parameters of CHGNet v0.3.0.
 
