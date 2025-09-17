@@ -1,4 +1,4 @@
-# CHGNet_post-processing-script
+# CHGNet-based-MC-sampling-toolkit
 Post-processing script for CHGNet
 
 The CHGNet model comes from this study:
