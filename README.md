@@ -32,24 +32,33 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ### ▸ Function
 
-**✔︎ Single point calculation**
+**☑ Single point calculation**
 > IBRION: -1
 
 > Energy, force, stress, and magnetic moment predictions are performed using CHGNet.
 
-**✔︎ Molecular dynamics**
+**☐ X-ray diffractometer (XRD)**
+> Automatically given in the calculation.
+
+**☑ Molecular dynamics**
 > IBRION: 0
 
 > Run a molecular dynamics simulation. You can choose to simulate in the NVE, NVT, or NPT ensemble.                 
 > Note! The choice of thermostat affects the lattice degrees of freedom during the NPT simulation.
 
-**✔︎ Geometry optimization**
+**☑ Geometry optimization**
 > IBRION: 1 or 3
 
 > Use different algorithms to optimize the structure and find the local minimum on the potential energy surface.
 > It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
-**✔︎ Sampling optimization using Monte Carlo**
+**☐ Phonon calculation**
+> IBRION: 5
+
+> Use finite differences to compute the hessian matrix and solve for the eigenvectors and eigenvalues.
+> And it comes with thermodynamic correction for the specified temperature.
+
+**☑ Sampling optimization using Monte Carlo**
 > IBRION: 11 or 13
 
 > The user can provide an initial structural model (POSCAR) and specify the atomic indices (starting from 0), as well as the types and numbers of dopant atoms in the "Input_CHGNet".
@@ -60,6 +69,28 @@ https://doi.org/10.1038/s42256-023-00716-3
 > The program allows you to set two convergence conditions to more strictly optimize the selected structures after the 1st stage of screening.
 
 ![Logo](./Diagram/Scheme.png) 
+
+**☐ Mechanical properties**
+> IBRION: 71 or 73
+
+> Calculates the elasticity tensor and solves for mechanical properties such as Young's modulus and bulk modulus.
+> It also outputs acoustic properties.
+> The optimization algorithm is the same as that in the optimization section.
+
+**☐ Nudged Elastic Band (NEB)**
+> IBRION: 80 or 83
+
+> Solve the transition state problem using known initial and final structures and a series of related images.
+> The number of images required is high and it is suitable for paths with multiple transition states.
+> Use the steepest descent (SD) (80) or the fast inertial relaxation engine (FIRE) (83) algorithm.
+
+**☐ Climbing-Image Nudged Elastic Band (CI-NEB)**
+> IBRION: 90 or 93
+
+> Similar to NEB, except that the energy peak continues to climb.
+> If convergence is achieved, the system automatically performs phonon calculations for the transition state.
+> It requires fewer images and is recommended for single transition state paths.
+> Use the steepest descent (SD) (90) or the fast inertial relaxation engine (FIRE) (93) algorithm.
 
 <br>
 <br>
