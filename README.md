@@ -50,6 +50,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 > IBRION: 1 or 3
 
 > Use different algorithms to optimize the structure and find the local minimum on the potential energy surface.
+> The lattice degrees of freedom can be selected during the optimization process.
 > It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
 <!-- **☐ Phonon calculation** -->
