@@ -71,6 +71,13 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ![Logo](./Diagram/Scheme.png) 
 
+**☐ Scan under constrained optimization**
+> IBRION: 21 or 23
+
+> Set one or two control variables to scan the potential energy and stress surfaces of the lattice.
+> The control option of lattice degrees of freedom still applies, but be careful about overlap with control variables.
+> The optimization algorithm is the same as that in the optimization section.
+
 **☐ Mechanical properties**
 > IBRION: 71 or 73
 
