@@ -53,11 +53,11 @@ https://doi.org/10.1038/s42256-023-00716-3
 > The lattice degrees of freedom can be selected during the optimization process.
 > It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
-<!-- **☐ Phonon calculation** -->
-<!-- > IBRION: 5 -->
+**☐ Phonon calculation**
+> IBRION: 5
 
-<!-- > Use finite differences to compute the hessian matrix and solve for the eigenvectors and eigenvalues. -->
-<!-- > And it comes with thermodynamic correction for the specified temperature. -->
+> Use finite differences to compute the hessian matrix and solve for the eigenvectors and eigenvalues.
+> And it comes with thermodynamic correction for the specified temperature.
 
 **☑ Sampling optimization using Monte Carlo**
 > IBRION: 11 or 13
