@@ -17,7 +17,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ## Executable file: cnsub_run.py
 ### ▸ Input files:
-**Input_CHGNet** : Required. If this file is not present, the program will generate a template and then terminate execution.
+**Input_CHGNet** : <span style="color:red">Required</span>. If this file is not present, the program will generate a template and then terminate execution.
 
 **POSCAR** : Required. Must conform to the standard VASP input format.
 
