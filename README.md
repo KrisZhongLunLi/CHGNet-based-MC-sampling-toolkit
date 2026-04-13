@@ -37,7 +37,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 > Energy, force, stress, and magnetic moment predictions are performed using CHGNet.
 
-**☐ X-ray diffractometer (XRD)**
+**☑ X-ray diffractometer (XRD)**
 > Automatically given in the calculation.
 
 **☑ Molecular dynamics**
@@ -53,7 +53,7 @@ https://doi.org/10.1038/s42256-023-00716-3
 > The lattice degrees of freedom can be selected during the optimization process.
 > It is recommended to use 1 when initially stabilizing the structure; use 3 when the initial structure differs greatly from the target.
 
-**☐ Phonon calculation**
+**☑ Phonon calculation**
 > IBRION: 5
 
 > Use finite differences to compute the hessian matrix and solve for the eigenvectors and eigenvalues.
@@ -71,28 +71,28 @@ https://doi.org/10.1038/s42256-023-00716-3
 
 ![Logo](./Diagram/Scheme.png) 
 
-**☐ Scan under constrained optimization**
+**☑ Scan under constrained optimization**
 > IBRION: 21 or 23
 
 > Set one or two control variables to scan the potential energy and stress surfaces of the lattice.
 > The control option of lattice degrees of freedom still applies, but be careful about overlap with control variables.
 > The optimization algorithm is the same as that in the optimization section.
 
-**☐ Mechanical properties**
+**☑ Mechanical properties**
 > IBRION: 71 or 73
 
 > Calculates the elasticity tensor and solves for mechanical properties such as Young's modulus and bulk modulus.
 > It also outputs acoustic properties.
 > The optimization algorithm is the same as that in the optimization section.
 
-**☐ Nudged Elastic Band (NEB)**
+**☑ Nudged Elastic Band (NEB)**
 > IBRION: 80 or 83
 
 > Solve the transition state problem using known initial and final structures and a series of related images.
 > The number of images required is high and it is suitable for paths with multiple transition states.
 > Use the steepest descent (SD) (80) or the fast inertial relaxation engine (FIRE) (83) algorithm.
 
-**☐ Climbing-Image Nudged Elastic Band (CI-NEB)**
+**☑ Climbing-Image Nudged Elastic Band (CI-NEB)**
 > IBRION: 90 or 93
 
 > Similar to NEB, except that the energy peak continues to climb.
