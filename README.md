@@ -13,7 +13,7 @@ If you make use of this toolkit in your research, please cite the following pape
 
 L.-T. Wu, Z.-L. Li, S.-Y. Yen, P. Kaghazchi, J.-C. Jiang. Probing entropic control of stacking phase preference in layered oxide cathodes for sodium-ion batteries via machine-learning potentials.
 
-*npj Comput. Mater.* **2026**, 12, 86 (https://doi.org/10.1038/s41524-025-01954-2)
+*npj Comput. Mater.* **2026**, 12, 86. (https://doi.org/10.1038/s41524-025-01954-2)
 
 # Outline
 - [Perform calculations](#Executable-file-cnsub_runpy)
