@@ -1,4 +1,4 @@
-# CHGNet-based-MC-sampling-toolkit
+# CHGNet-based-SMC-sampling-toolkit
 Post-processing script for Swap Monte Carlo (driven by CHGNet)
 
 The CHGNet model comes from this study:
