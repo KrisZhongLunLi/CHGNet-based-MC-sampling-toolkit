@@ -147,9 +147,9 @@ def gen(path_f, st_inp):  # Generate a text string and log it to the output file
 
 
 def wr_cncar_t():
-    gen(Path_log, '"CNCAR_T" does not exist. The program will automatically generate it.')
+    gen(Path_log, '"Input_CHGNet_Training" does not exist. The program will automatically generate it.')
     gen(Path_log, "Please change the settings and resubmit the job.")
-    with open(os.path.join(Path_job, "CNCAR_T"), 'w', encoding="utf-8") as nf_rf:
+    with open(os.path.join(Path_job, "Input_CHGNet_Training"), 'w', encoding="utf-8") as nf_rf:
         nf_rf.write("# " + st_str + "\n\n"
                     "# General\n"
                     "#  Tags      Options   Default  Comments\n"
@@ -620,8 +620,8 @@ if __name__ == "__main__":
         NUM_W = 1
     RANDSEED = None
 
-    if os.path.exists(os.path.join(Path_job, "CNCAR_T")):
-        rd_cncar_t(os.path.join(Path_job, "CNCAR_T"))
+    if os.path.exists(os.path.join(Path_job, "Input_CHGNet_Training")):
+        rd_cncar_t(os.path.join(Path_job, "Input_CHGNet_Training"))
     else:
         wr_cncar_t()
 
