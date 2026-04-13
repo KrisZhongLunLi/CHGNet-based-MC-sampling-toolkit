@@ -3,9 +3,14 @@ Post-processing script for Swap Monte Carlo (driven by CHGNet)
 
 The CHGNet model comes from this study:
 
-Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling. Nat Mach Intell 5, 1031–1041 (2023). 
-
+Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling. 
+*Nat. Mach. Intell.* **2023**, 5, 1031–1041. 
 https://doi.org/10.1038/s42256-023-00716-3
+
+If you make use of this toolkit in your research, please cite the following paper:
+L.-T. Wu, Z.-L. Li, S.-Y. Yen, P. Kaghazchi, J.-C. Jiang. Probing entropic control of stacking phase preference in layered oxide cathodes for sodium-ion batteries via machine-learning potentials. 
+*npj Comput. Mater.* **2026**, 12, 86
+https://doi.org/10.1038/s41524-025-01954-2
 
 # Outline
 - [Perform calculations](#Executable-file-cnsub_runpy)
