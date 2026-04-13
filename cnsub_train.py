@@ -1,10 +1,9 @@
-# Modify by Zhong-Lun Li Sep. 16 2025,
+# Modify by Zhong-Lun Li Dec. 13 2025,
 # Department of Chemical Engineering, National Taiwan University of Science and Technology, Taipei 106, Taiwan
 
 # The CHGNet model comes from this study:
 # Deng, B., Zhong, P., Jun, K. et al. CHGNet as a pretrained universal neural network potential for
 # charge-informed atomistic modelling. Nat Mach Intell 5, 1031–1041 (2023). https://doi.org/10.1038/s42256-023-00716-3
-
 
 import os, glob, torch, time, sys, io, random
 import numpy as np
@@ -67,6 +66,9 @@ def rd_cncar_t(path_f):
         elif data_nif[0] == "BATCH":
             global BATCH
             BATCH = int(data_nif[-1])
+        elif data_nif[0] == "NUM_W":
+            global NUM_W
+            NUM_W = int(data_nif[-1])
         elif data_nif[0] == "RANDSEED":
             global RANDSEED
             RANDSEED = int(data_nif[-1])
@@ -159,7 +161,8 @@ def wr_cncar_t():
                     "  LRS      =   1       # [1]    # learning rate scheduler, CosLR (1) or ExponentialLR (2)\n"
                     "  EPOCH    =  50       # [50]   # number of epochs for training\n"
                     "  FPTO     =  100      # [100]  # frequency to print training output\n"
-                    "  BATCH    =   6       # [NCPUs]# the number of images calculated per synchronization\n"
+                    "  BATCH    =   6       # [6]    # the number of images calculated per synchronization\n"
+                    "  NUM_W    =   0       # [NCPUs]# the number of parallelization\n"
                     "  RANDSEED =  42       # [None] "
                                     "# integer, random seeds are used to allocate training, validation, and test sets")
 
@@ -263,7 +266,7 @@ def train_main_sub(path_job, train_loader, val_loader, test_loader, model_chgnet
     from chgnet.trainer import Trainer
     # Define Trainer
     trainer = Trainer(model=model_chgnet, targets=training_target, optimizer="Adam", scheduler=lrs,
-                      criterion=crt, epochs=epoch, learning_rate=lea_r, use_device="cpu", print_freq=fpto)
+                      criterion=crt, epochs=epoch, learning_rate=lea_r, print_freq=fpto)
     trainer.train(train_loader, val_loader, test_loader, save_dir=path_job,  save_test_result=True)
 
 
@@ -492,7 +495,7 @@ def export_testing(path_job, training_target):
         energy_f[nif, :] = np.array([data_f["ground_truth"], data_f["prediction"]])
         st_f += (num_printer(energy_f[nif, 0], 14, 6, 0) +
                  num_printer(energy_f[nif, 1], 14, 6, 0) + "\n")
-    with open(os.path.join(path_job, "__CHGNet_Energy_testing.log"), 'w') as nf_rf:
+    with open(os.path.join(path_job, "__CHGNET_Energy_testing.log"), 'w') as nf_rf:
         nf_rf.write(st_f)
     linear_reg_v = linear_reg(energy_f[:, 0], energy_f[:, 1])
     plt.subplots(figsize=(12, 9), dpi=300)
@@ -506,7 +509,7 @@ def export_testing(path_job, training_target):
               " ; Intercept: " + num_printer(linear_reg_v[1], 13, 3, 1) +
               " ; R_sq: " + num_printer(linear_reg_v[2], 6, 3, 0), fontsize=20)
     plt.grid(True, linestyle="--", linewidth=1, alpha=0.7)
-    plt.savefig(os.path.join(path_job, "__CHGNet_Energy_testing.png"))
+    plt.savefig(os.path.join(path_job, "__CHGNET_Energy_testing.png"))
     plt.close()
 
     # Force
@@ -520,7 +523,7 @@ def export_testing(path_job, training_target):
         for nif2 in range(force_new_f.shape[0]):
             st_f += (num_printer(force_new_f[nif2, 0], 14, 6, 0) +
                      num_printer(force_new_f[nif2, 1], 14, 6, 0) + "\n")
-    with open(os.path.join(path_job, "__CHGNet_Force_testing.log"), 'w') as nf_rf:
+    with open(os.path.join(path_job, "__CHGNET_Force_testing.log"), 'w') as nf_rf:
         nf_rf.write(st_f)
     linear_reg_v = linear_reg(force_f[:, 0], force_f[:, 1])
     plt.subplots(figsize=(12, 9), dpi=300)
@@ -534,7 +537,7 @@ def export_testing(path_job, training_target):
               " ; Intercept: " + num_printer(linear_reg_v[1], 13, 3, 1) +
               " ; R_sq: " + num_printer(linear_reg_v[2], 6, 3, 0), fontsize=20)
     plt.grid(True, linestyle="--", linewidth=1, alpha=0.7)
-    plt.savefig(os.path.join(path_job, "__CHGNet_Force_testing.png"))
+    plt.savefig(os.path.join(path_job, "__CHGNET_Force_testing.png"))
     plt.close()
 
     # Stress
@@ -546,7 +549,7 @@ def export_testing(path_job, training_target):
                                          -np.average(np.diag(np.array(data_test[nif]["stress"]["prediction"])))])
             st_f += (num_printer(stress_f[nif, 0], 14, 6, 0) +
                      num_printer(stress_f[nif, 1], 14, 6, 0) + "\n")
-        with open(os.path.join(path_job, "__CHGNet_Hydrostatic stress_testing.log"), 'w') as nf_rf:
+        with open(os.path.join(path_job, "__CHGNET_Hydrostatic stress_testing.log"), 'w') as nf_rf:
             nf_rf.write(st_f)
         linear_reg_v = linear_reg(stress_f[:, 0], stress_f[:, 1])
         plt.subplots(figsize=(12, 9), dpi=300)
@@ -560,7 +563,7 @@ def export_testing(path_job, training_target):
                   " ; Intercept: " + num_printer(linear_reg_v[1], 13, 3, 1) +
                   " ; R_sq: " + num_printer(linear_reg_v[2], 6, 3, 0), fontsize=20)
         plt.grid(True, linestyle="--", linewidth=1, alpha=0.7)
-        plt.savefig(os.path.join(path_job, "__CHGNet_Hydrostatic stress_testing.png"))
+        plt.savefig(os.path.join(path_job, "__CHGNET_Hydrostatic stress_testing.png"))
         plt.close()
 
     # Magnetic moment
@@ -575,7 +578,7 @@ def export_testing(path_job, training_target):
             for nif2 in range(magmom_new_f.shape[0]):
                 st_f += (num_printer(magmom_new_f[nif2, 0], 14, 6, 0) +
                          num_printer(magmom_new_f[nif2, 1], 14, 6, 0) + "\n")
-        with open(os.path.join(path_job, "__CHGNet_Magmetic moment_testing.log"), 'w') as nf_rf:
+        with open(os.path.join(path_job, "__CHGNET_Magmetic moment_testing.log"), 'w') as nf_rf:
             nf_rf.write(st_f)
         linear_reg_v = linear_reg(magmom_f[:, 0], magmom_f[:, 1])
         plt.subplots(figsize=(12, 9), dpi=300)
@@ -589,15 +592,14 @@ def export_testing(path_job, training_target):
                   " ; Intercept: " + num_printer(linear_reg_v[1], 13, 3, 1) +
                   " ; R_sq: " + num_printer(linear_reg_v[2], 6, 3, 0), fontsize=20)
         plt.grid(True, linestyle="--", linewidth=1, alpha=0.7)
-        plt.savefig(os.path.join(path_job, "__CHGNet_Magmetic moment_testing.png"))
+        plt.savefig(os.path.join(path_job, "__CHGNET_Magmetic moment_testing.png"))
         plt.close()
 
 
 # Start point
 if __name__ == "__main__":
     st_time = time.time()
-    st_str = ("Modify by Zhong-Lun Li Sep. 16 2025\n# Department of Chemical Engineering, "
-              "National Taiwan University of Science and Technology, Taipei 106, Taiwan")
+    st_str = "Made by Zhong-Lun Li, Dec. 13 2025"
     Path_job = "."
     Path_log = os.path.join(Path_job, "CHGNET_training_results.log")
     Path_out = os.path.join(Path_job, "CHGNET_tmp.log")
@@ -611,10 +613,11 @@ if __name__ == "__main__":
     LRS = "CosLR"
     EPOCH = 50
     FPTO = 100
+    BATCH = 6
     if len(sys.argv) > 1:
-        BATCH = int(sys.argv[1])
+        NUM_W = int(sys.argv[1])
     else:
-        BATCH = 1
+        NUM_W = 1
     RANDSEED = None
 
     if os.path.exists(os.path.join(Path_job, "CNCAR_T")):
@@ -659,19 +662,19 @@ if __name__ == "__main__":
 
     Train_loader, Val_loader, Test_loader = (
         get_train_val_test_loader(dataset=Dataset, batch_size=BATCH, train_ratio=RAT_TRA, val_ratio=RAT_VAL,
-                                  num_workers=BATCH, rand_seed=RANDSEED))
+                                  num_workers=NUM_W, rand_seed=RANDSEED))
 
     # Load pretrained CHGNet
     from chgnet.model import CHGNet
-    Path_pot = os.path.join(Path_job, "Fine_Tune_Model.tar")
+    Path_pot = os.path.join(Path_job, "POTCAR.tar")
     if os.path.exists(Path_pot):
         checkpoint = torch.load(Path_pot, map_location="cpu")
         Model_CHGNET = CHGNet.from_dict(checkpoint["model"])
-        gen(Path_log, 'Read the "Fine_Tune_Model.tar" archive '
+        gen(Path_log, 'Read the "POTCAR.tar" archive '
                       'and continue training using the previously trained model...\n')
     else:
         Model_CHGNET = CHGNet.load()
-        gen(Path_log, 'Unable to read "Fine_Tune_Model.tar" file, '
+        gen(Path_log, 'Unable to read "POTCAR.tar" file, '
                       'starting training using pre-trained model...\n')
 
     Process_Training = Process(target=train_main,
